@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    @apply bg-gray-50;
+}
+@layer components {
+    .btn-green {
+        @apply bg-green-500 text-white px-3 py-2 rounded-md text-sm;
+    }
+    .card {
+        @apply p-3 rounded-md bg-white shadow-md h-full;
+    }
+}
