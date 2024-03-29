@@ -1,5 +1,5 @@
 <template>
-   <div class="container w-[40%] mx-auto">
+   <div class="container md:w-[40%] mx-auto p-4">
         <div class="mt-[50px] text-justify space-y-4">
               <h3 class="text-[36px]">About Us</h3>
               <p>At ZG Cleaning, I merge professional expertise with an entrepreneurial drive to deliver top-quality residential cleaning services. With a background in architecture I have honed skills that we now apply with precision to our cleaning business.

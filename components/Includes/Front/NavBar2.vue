@@ -26,7 +26,7 @@
             <nav>
                 <ul 
                     class="                    
-                        px-10 pb-10 absolute bg-gray-900 w-full top-45 duration-700 ease-in z-10
+                        px-10 pb-10 absolute bg-gray-900 w-full top-45 duration-700 ease-in z-50
                         md:flex md:items-center md:px-0 md:pb-0 md:static md:w-auto
                     "
                     :class="[open ? 'left-0' : 'left-[-100%]']"
@@ -50,7 +50,7 @@
             </nav>
         </div>
         
-       <div>
+       <div class="hidden md:block">
             <IncludesFrontButton>
                 <nuxt-link to="/booking">Book Now</nuxt-link>
             </IncludesFrontButton>
@@ -66,7 +66,7 @@ let open = ref(false)
 let links = ref([
     {name: 'Home', url: '/'},
     {name: 'Services', url: '/services'},
-    {name: 'Gallery', url: '/portfolio'},
+    {name: 'Free Quote', url: '/quotes'},
     {name: 'About Us', url: '/about-us'},
     {name: 'Contact', url: '/contact'},
 ])

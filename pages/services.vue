@@ -1,28 +1,47 @@
 <template>
-    <div class="container w-[40%] mx-auto">
+    <div class="
+            container 
+            md:w-[40%] 
+            mx-auto
+            p-4
+            "
+        >
         <div class="mt-[50px]">
             <h1 class="text-[36px] text-center font-bold mb-4">Zg Cleaning Services</h1>
             <h2 class="leading-normal text-justify">Welcome to <nuxt-link to="/" class="font-bold text-[#00B8E0] hover:text-orange-500">ZG Cleaning</nuxt-link>, your trusted home cleaning partner in the vibrant heart of Tampa Bay! From regular residential cleaning to one-time, spring or fall, same-day, and holiday cleaning services, we've got you covered. Experience cleanliness and comfort with us!</h2>
             <div 
-        v-for="(service, index) in services" :key="index"
-        class="flex gap-4 mt-[24px]">
-        <div class="w-1/3 drop-shadow-xl">
-            <img class="" :src="`_nuxt/assets/images/${service.img}.jpg`" alt="">
-        </div>
-        <div class="w-2/3 space-y-2">
-            <h3 class="font-bold text-[24px] text-[#00B8E0]">{{service.title}}</h3>
-            <p class="mb-4">
-                {{ service.description }}    
-            </p>
-            <nuxt-link to="/booking" class="mt-4">
-                <button class="">
-                    <IncludesFrontButton>
-                        BooK Now
-                    </IncludesFrontButton>
-                </button>
-            </nuxt-link>
-        </div>
-    </div><!--End Card Services-->
+                v-for="(service, index) in services" :key="index"
+                class="md:flex gap-4 mt-[24px]">
+                <div class="md:w-1/3 drop-shadow-xl">
+                    <img class="" :src="`_nuxt/assets/images/${service.img}.jpg`" alt="">
+                </div>
+                <div class="md:w-2/3 space-y-2">
+                    <h3 class="
+                            font-bold 
+                            text-[24px] text-[#00B8E0] text-center
+                            md:text-left
+                            mt-[20px]
+                            "
+                            >
+                            {{service.title}}
+                    </h3>
+                    <p class="mb-4">
+                        {{ service.description }}    
+                    </p>
+                    <nuxt-link to="/booking" class="mt-4">
+                        <button class="
+                            w-full        
+                            md:w-52
+                            md:text-left
+                                    "
+                        >
+                            <IncludesFrontButton>
+                                BooK Now
+                            </IncludesFrontButton>
+                        </button>
+                    </nuxt-link>
+                </div>
+            </div><!--End Card Services-->
         
         </div>      
     </div>

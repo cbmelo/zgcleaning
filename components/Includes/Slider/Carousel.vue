@@ -3,7 +3,14 @@
      <slot :currentSlide="currentSlide"/>
 
       <!--Arrow Navigation-->       
-      <div class="navigate flex absolute w-full md:h-3/4 justify-between items-center py-0 px-4 ">
+      <div class=" 
+            flex 
+            absolute 
+            w-full h-3/4
+            md:h-3/4 
+            justify-between 
+            items-center 
+            py-0 px-4 ">
             <i @click="prevSlide" class="material-icons rounded-full bg-[#00B8E0] text-white cursor-pointer">
                 chevron_left
             </i>

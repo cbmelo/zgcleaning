@@ -2,15 +2,43 @@
     <div class=" w-full bg-[#007486] mt-[100px]">
         
         <div class="container w-[80%] mx-auto pt-[50px] pb-[50px] text-white">
-            <div class="flex justify-between gap-2">
+            <div class="md:flex justify-between gap-2">
                 <div class="w-full md:w-1/3">
                     <h3 class="text-lg font-bold mb-4">About ZG Cleaning</h3>
+                    <div class="
+                            border border-blue-100
+                            md:border-0
+                            mb-4
+                            "
+                        >
+                    </div>
                     <p>
                         Established on January 13, 2015. Ever since, the company has been able to produce and deliver glamorous and outstanding cleaning services to all of its clients.
                     </p>
                 </div>
-                <div class="w-full md:w-1/3 text-center">
-                    <h3 class="text-lg font-bold mb-4">Main Menu</h3>
+                
+                <div class="
+                        w-full 
+                        md:w-1/3 
+                        md:text-center
+                        "
+                    >
+                    <h3 class="
+                            text-lg 
+                            font-bold 
+                            mb-4 mt-4
+                            md:mt-0
+                            "
+                        >
+                        Main Menu
+                    </h3>
+                    <div class="
+                            border border-blue-100
+                            md:border-0
+                            mb-4
+                            "
+                        >
+                    </div>
                     <nav>
                         <ul>
                             <li v-for="(link, index) in links" :key="index" class="hover:text-yellow-500">
@@ -21,7 +49,20 @@
                     </nav>
                 </div>
                 <div class="w-full md:w-1/3">
-                    <h3 class="text-lg font-bold mb-4">Business Info</h3>
+                    <h3 class="
+                            text-lg 
+                            font-bold 
+                            mb-4 mt-4
+                            md:mt-0
+                            "
+                        >Business Info</h3>
+                    <div class="
+                            border border-blue-100
+                            md:border-0
+                            mb-4
+                            "
+                        >
+                    </div>
                     <div class="flex items-center gap-2 mb-2">
                         <i class="material-icons text-white">storefront</i>
                         <p>
@@ -58,10 +99,10 @@
                 
             </div>
         </div><!--End top footer-->
-        <div class="flex justify-center gap-2 text-white border-t pt-8 pb-8 border-black">
+        <div class="flex text-[18px] justify-center gap-2 text-white border-t pt-8 px-4 pb-8 border-black">
             <i class="material-icons text-white">copyright</i>
-            <p>
-                All Rights Reserved to ZG Cleaning Services - 2015 - 2024
+            <p class="text-center">
+                All Rights Reserved to ZG Cleaning Services 2015 - 2024
             </p>
         </div>
 
