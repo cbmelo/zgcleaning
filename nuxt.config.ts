@@ -10,7 +10,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-        title: 'User Management',
+        title: 'ZG Cleaning Service - Tampa Bay',
         meta: [
             { name: 'description', content: 'User Roles and Permissions'}
         ],

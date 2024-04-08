@@ -20,7 +20,7 @@
                             </div>
                         </div>
                         <div class="absolute inset-0 bg-black opacity-80"></div>
-                        <img class="" :src="`_nuxt/assets/images/${slide.name}.jpg`" alt="">
+                        <img class="" :src="`/images/${slide.name}.jpg`" alt="">
                     </div>                     
                 </IncludesSliderSlide>
             </IncludesSliderCarousel>      

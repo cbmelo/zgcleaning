@@ -4,7 +4,7 @@ export default defineNuxtPlugin( async () => {
     axios.defaults.withCredentials = true;
     axios.defaults.withXSRFToken = true;
     
-    const defaultUrl = "http://localhost:8000"
+    const defaultUrl = "https://api.zgcleaning.com"
     
    // await axios.get(`${defaultUrl}/sanctum/csrf-cookie`);
 

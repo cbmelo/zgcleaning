@@ -10,6 +10,11 @@
            ">
     
            <h1 class="font bold md:text-xl uppercase mt-4 mb-4 text-center mb-8">Tell me about your home - Book Now</h1>
+
+           <div v-if="successMessage" class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+            <strong class="font-bold">Success!</strong>
+            <span class="block sm:inline">{{ successMessage }}</span>
+          </div>
         
         <!--form-->
         
@@ -29,9 +34,7 @@
                         </label>
                         <input 
                             v-model="form.first_name"
-                            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane">
-                            <p class="text-red-500 text-xs italic" v-if="!form.first_name">Please enter your first name</p>
-
+                            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Jane">
                         </div>
                         <div class="w-full md:w-1/2 px-3">
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
@@ -108,20 +111,36 @@
                     <div>
                         <h3 class="font-bold text-start mb-2">Choose Date and Time Preference?</h3>
                         <!-- <p class="mb-4">Tell us about the size of your place (a half bath count as a full bathroom).</p> -->
-                    <div class="flex justiy-between -mx-3 mb-2">
-                        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                            <input 
-                                v-model="form.date"
-                                type="date"
-                                class="block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" >
+                        <div class="flex justiy-between -mx-3 mb-2">
+                           
+                            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                <label for="time" class="block text-sm font-medium leading-6 text-gray-900">Date</label>
+                                <input 
+                                    v-model="form.date"
+                                    type="date"
+                                    class="block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" >
+                            </div>
+                            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                <label for="time" class="block text-sm font-medium leading-6 text-gray-900">Time</label>
+                               
+                                    <select v-model="form.time" id="time" name="time" autocomplete="time" class="block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white">
+                <option value="06:00 AM">6:00 AM</option>
+                <option value="07:00 AM">7:00 AM</option>
+                <option value="08:00 AM">8:00 AM</option>
+                <option value="09:00 AM">9:00 AM</option>
+                <option value="10:00 AM">10:00 AM</option>
+                <option value="11:00 AM">11:00 AM</option>
+                <option value="12:00 PM">12:00 PM</option>
+                <option value="1:00 PM">1:00 PM</option>
+                <option value="2:00 PM">2:00 PM</option>
+                <option value="3:00 PM">3:00 PM</option>
+                <option value="4:00 PM">4:00 PM</option>
+                <option value="5:00 PM">5:00 PM</option>
+            </select>
+                                
+                               
+                            </div>
                         </div>
-                        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                            <input 
-                                v-model="form.time"
-                                type="time"
-                                class="block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" >
-                        </div>
-                    </div>
                     </div><!--end time-->       
                     <div class="w-full md:w-full px-3 mb-6 md:mb-0">
                         <div class="flex flex-wrap -mx-3 mb-6">
@@ -177,11 +196,11 @@
                                     <i class="material-icons text-red-500">{{service.icon}}</i>
                                     <p class="text-sm">{{ service.name}}</p>
                                     <div v-if="service.selected" class="flex justify-center items-center mt-2">
-                                        <button @click="increaseQuantity(service)" class="px-2 py-1 bg-blue-500 text-white rounded-l">+</button>
+                                        <button @click.stop="increaseQuantity(service)" class="px-2 py-1 bg-blue-500 text-white rounded-l">+</button>
                                         <span class="px-2">{{ service.quantity }}</span>
-                                        <button @click="decreaseQuantity(service)" class="px-2 py-1 bg-blue-500 text-white rounded-r">-</button>
+                                        <button @click.stop="decreaseQuantity(service)" class="px-2 py-1 bg-blue-500 text-white rounded-r">-</button>
                                     </div>
-                                    <span class="tooltip p-2 border-b bg-black text-white">
+                                    <span class="tooltip p-2 border-b bg-black text-white z-50">
                                         <p class="z-40">{{ service.tooltip }}</p>
                                     </span>
                                 </div>                            
@@ -269,10 +288,12 @@
                         {{ form.number_bathroom ? `${form.number_bathroom.name} - $${form.number_bathroom.price}` : '' }}
                     </p>
                     <p class="flex gap-2 items-center"><i class="material-icons font-bold">schedule</i> 
-                        {{ new Date(form.time).toLocaleTimeString('en-US', { hour12: true }) }}
+                        {{ form.time }}
                     </p>
-                    <p class="flex gap-2 items-center"><i class="material-icons font-bold">hourglass_empty</i>
-                        {{ new Date(form.time).toLocaleDateString('en-US') }}</p>
+<p class="flex gap-2 items-center"><i class="material-icons font-bold">hourglass_empty</i>
+    {{ new Date(form.date).toLocaleDateString('en-US') }}
+</p>
+
                     <p class="flex gap-2 items-center"><i class="material-icons font-bold">repeat</i> {{ form.how_often }}</p>
                    
                     <div v-if="form.extra_services.length > 0" class="mb-4">
@@ -313,6 +334,12 @@
 
 <script setup>
 import { ref, watchEffect } from 'vue';
+import { useRouter } from 'vue-router'
+
+  
+const router = useRouter()
+const errors = ref({})
+const successMessage = ref('')
 
 const calculateTotal = () => {
     let total = 0;
@@ -362,7 +389,7 @@ const form = ref({
     house_size: '',
     number_bathroom: '',
     date: '',
-    time: '',
+    time: 'Select Time',
     how_often: '',
     extra_services: [],
     address: '',
@@ -404,13 +431,17 @@ const decreaseQuantity = (service) => {
     if (service.quantity > 0) {
         service.quantity--;
         form.value.total -= service.price;
-    } else if (service.quantity === 1) {
+    }
+
+    // Se a quantidade for zero, desmarca o serviço
+    if (service.quantity === 0) {
         service.selected = false;
         const index = form.value.extra_services.findIndex(s => s === service);
         form.value.extra_services.splice(index, 1);
         form.value.total -= service.price;
     }
 };
+
 
 const handleAddExtraService = (service, price) => {
     if (!isServiceSelected(service)) {
@@ -420,10 +451,14 @@ const handleAddExtraService = (service, price) => {
         form.value.extra_services.push(service);
         form.value.total += service.price * service.quantity; // Multiplica o preço do serviço pela quantidade ao adicionar
     } else {
-        // Se o serviço já estiver selecionado, não faz nada
-        // A seleção será alterada ao ajustar a quantidade com os botões + e -
+        // Se o serviço já estiver selecionado, desmarca-o e remove-o da lista de serviços extras
+        service.selected = false;
+        const index = form.value.extra_services.findIndex(s => s === service);
+        form.value.extra_services.splice(index, 1);
+        form.value.total -= service.price * service.quantity; // Subtrai o preço do serviço pela quantidade ao remover
     }
 };
+
 
 const isServiceSelected = (service) => {
     return form.value.extra_services.includes(service);
@@ -446,24 +481,54 @@ const handleBooking = async () => {
         const axios = useNuxtApp().$api
         const response = await axios.post('/api/v1/booking', formExtra)
         console.log(response.data);
+
+        if (response.status === 200) {
+      // Exibir mensagem de sucesso
+      successMessage.value = 'As soon as possible one of our representatives will contact you!'
+
+      setTimeout(() => {
+        successMessage.value = 'As soon as possible one of our representatives will contact you!!'
+        // Redirect to home page after 3 seconds
+        setTimeout(() => {
+          router.push({ path: '/' })
+        }, 3000)
+      }, 1000)
+        }
     } catch (error) {
-        console.log(error);
+        if (error.response && error.response.status === 422) {
+      errors.value = error.response.data.errors
+    } else {
+      // Exibir mensagem de erro genérica se ocorrer um erro inesperado
+      console.error('An unexpected error occurred:', error.message)
     }
-}
+  }
+    }
+
+    
+
 
   
 </script>
 
 
 <style scoped>
-.tooltip {
-  display: none;
+.service {
+    position: relative; /* Define a posição relativa para o elemento pai */
+}
+
+.service .tooltip {
+    position: absolute; /* Define a posição absoluta para o tooltip */
+    top: 100px; /* Posiciona o tooltip acima da caixa */
+    left: 40%; /* Alinha o tooltip no centro horizontalmente */
+    transform: translateX(-50%); /* Centraliza horizontalmente */
+    display: none; /* Oculta o tooltip por padrão */
+    z-index: 9999; /* Garante que o tooltip esteja acima de outros elementos */
 }
 
 .service:hover .tooltip {
-  display: block;
-  z-index: 9999;
+    display: block; /* Mostra o tooltip quando o mouse está sobre a caixa */
 }
+
 
 .selected {
     /* Add styles for the selected extra service */
